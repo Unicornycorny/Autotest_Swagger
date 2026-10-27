@@ -1,7 +1,9 @@
 
 import json
 from pathlib import Path
+from urllib import response
 
+import pytest
 import requests
 from jsonschema import validate, FormatChecker
 
@@ -15,7 +17,9 @@ SCHEMA_PATH = (
 )
 
 
-def test_create_order_status_200():
+
+@pytest.fixture(scope="module") #декоратор фикстура
+def order_response():
     order_data = {
         "id": 12345,
         "petId": 123,
@@ -35,20 +39,26 @@ def test_create_order_status_200():
     print("Response status:", response.status_code)
     print("Response body:", response.text)
 
-    assert response.status_code == 200, (
-        f"Expected 200, got {response.status_code}. "
-        f"Response: {response.text}"
+    return response #передаёт результат 1 раз каждому тесту, а не при вызове
+
+#проверка статуса
+def test_create_order_status_200(order_response): 
+    assert order_response.status_code == 200, (
+        f"Expected 200, got {order_response.status_code}. "
+        f"Response: {order_response.text}"
     )
+    
+    
+    #проверка модели
+def test_create_order_schema(order_response):
+        response_body = order_response.json() # Преобразование JSON в словарь Python
 
+        # Загрузка JSON Schema из файла
+        with SCHEMA_PATH.open(encoding="utf-8") as schema_file:
+            order_schema = json.load(schema_file) #в словарь python
 
-    response_body = response.json() # Преобразование JSON в словарь Python
-
-    # Загрузка JSON Schema из файла
-    with SCHEMA_PATH.open(encoding="utf-8") as schema_file:
-        order_schema = json.load(schema_file) #в словарь python
-
-    validate(
-        instance=response_body,
-        schema=order_schema,
-        format_checker=FormatChecker()
-    )
+        validate(
+            instance=response_body,
+            schema=order_schema,
+            format_checker=FormatChecker()
+        )
