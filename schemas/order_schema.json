@@ -1,0 +1,42 @@
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": -9223372036854775808,
+      "maximum": 9223372036854775807
+    },
+    "petId": {
+      "type": "integer",
+      "minimum": -9223372036854775808,
+      "maximum": 9223372036854775807
+    },
+    "quantity": {
+      "type": "integer",
+      "minimum": -2147483648,
+      "maximum": 2147483647
+    },
+    "shipDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["placed", "approved", "delivered"]
+    },
+    "complete": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "petId",
+    "quantity",
+    "shipDate",
+    "status",
+    "complete"
+  ],
+  "additionalProperties": false
+}

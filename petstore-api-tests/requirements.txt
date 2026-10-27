@@ -1,4 +1,4 @@
 pytest
 requests
-jsonschema
+jsonschema[format]
 allure-pytest
