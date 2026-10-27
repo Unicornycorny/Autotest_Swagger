@@ -1,0 +1,14 @@
+# Python virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+# Allure generated files
+allure-results/
+allure-report/
+
+# Local environment
+.env
+tests/__pycache__/test_store_order.cpython-315-pytest-9.1.1.pyc

@@ -1,0 +1,4 @@
+{
+  "name": "Swagger Petstore API Tests",
+  "output": "./allure-report"
+}
