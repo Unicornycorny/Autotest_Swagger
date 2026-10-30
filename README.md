@@ -27,4 +27,3 @@
 ### Общая статистика
 
 ![Allure Report — общая статистика](screenshots/1.png)
-
