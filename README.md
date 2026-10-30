@@ -28,6 +28,3 @@
 
 ![Allure Report — общая статистика](screenshots/1.png)
 
-### Ошибка валидации JSON Schema
-
-![Allure Report — ошибка формата shipDate](screenshots/2.png)

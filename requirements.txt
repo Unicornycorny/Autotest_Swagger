@@ -1,0 +1,9 @@
+
+pytest
+pytest-xdist
+httpx
+pydantic>=2,<3
+allure-pytest
+
+requests
+jsonschema[format]

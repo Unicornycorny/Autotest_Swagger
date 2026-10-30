@@ -7,7 +7,7 @@ cd /d "%~dp0"
 echo Running API tests...
 
 REM Запуск Pytest с сохранением результатов для Allure
-".venv\Scripts\python.exe" -m pytest -v tests\test_store_order.py --alluredir=allure-results --clean-alluredir
+".venv\Scripts\python.exe" -m pytest -n 2 -v tests\test_store_order_httpx.py --alluredir=allure-results --clean-alluredir
 
 REM Сохраняем код завершения Pytest
 set "TEST_EXIT=%ERRORLEVEL%"

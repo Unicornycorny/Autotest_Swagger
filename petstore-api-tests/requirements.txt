@@ -1,4 +1,0 @@
-pytest
-requests
-jsonschema[format]
-allure-pytest
